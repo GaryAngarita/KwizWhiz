@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kwiz Whiz Results</title>
+    {% load static %}
+</head>
+<body>
+    <h1>Here are your results {{ request.session.name }}</h1>
+
+    <h3>Total questions: {{request.session.total}}</h3>
+    <h3>Score: {{request.session.score}}</h3>
+    <h3>Correct: {{request.session.correct}}</h3>
+    <h3>Incorrect (or blank): {{request.session.wrong}}</h3>
+    {% if request.session.score > 90 %}
+    <img src="{% static 'img/basketball.jpg' %}" height="200" width="200">
+    {% elif request.session.score < 90 %}
+    <img src="{% static 'img/pets.jpg' %}" height="100" width="100" alt="">
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Kwiz Whiz</title>
+    {% load static %}
+    <script>
+
+    </script>
+</head>
+<body>
+    <h1>Good luck with your {{quiz.name}} quiz, {{request.session.name}}!</h1>
+
+    <div>
+        <div>
+            <form method="POST" action="/processquiz/{{quiz.id}}">
+            {% csrf_token %}
+            {% for question in quiz.questions.all %}
+            <label for="question">{{question.title}}</label>
+                {% for answer in question.answers.all %}
+            <h5>{{answer.answer_text}}</h5>
+            <div class="row mb-3">
+                {% endfor %}
+                <label for="answer" class="col-sm-2 col-form-label">Type your answer here</label>
+                <div class="col-sm-10">
+                    <input type="hidden" id="custId" name="return-{{answer.id}}" value="{{answer.is_right}}">
+                    <input type="text" class="form-control" name="answer-{{answer.id}}">
+                </div>
+            </div>
+            <br>
+            <hr>
+            {% endfor %}
+            <button type="submit">Submit Quiz</button>
+            </form>
+        </div>
+
+
+    </div>
+    
+</body>
+</html>
+
