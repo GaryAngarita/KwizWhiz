@@ -42,35 +42,19 @@ def takequiz(request, quiz_id):
 def processquiz(request, quiz_id):
     if request.method == 'POST':
         quiz = Quiz.objects.get(id = quiz_id)
-        questions = Question.objects.filter(quiz = quiz)
-        options = Answer.objects.filter(question = questions)
-        # right = Answer.objects.filter(is_right = True)
-        for option in options:
-            user_answer = Answer.objects.filter(answer_text = request.POST.get('answer-'+{option.id}))   
-        # true_answer = request.POST['return']
-        # for option in options:
-        #     if option == Answer.objects.get(is_right = True):
-        #         true_answer = option
         total = 0
         wrong = 0
         correct = 0
         score = 0
-        for question in questions:
+        for question in quiz.questions.all():
             total += 1
-            print(question.title)
-            print()
-            print(user_answer)
-            if user_answer[0] == True:
-                true_answer = request.POST['return']
-                print(true_answer)
-                correct += 1
-            else:
-                wrong += 1
-
-            # if request.POST['answer'] == request.POST.get('answer.is_right'):
-            #     correct += 1
-            # elif request.POST['answer'] == '' or request.POST['answer'] != request.POST.get('answer.is_right'):
-            #     wrong += 1
+            for answer in question.answers.all():
+                if answer.is_right and answer.answer_text == request.POST['answer-'+str(question.id)]:              
+                    correct += 1
+                elif request.POST['answer-'+str(question.id)] == '':
+                    return redirect('takequiz')
+                elif not answer.is_right and answer.answer_text == request.POST['answer-'+str(question.id)]:
+                    wrong += 1
         score = correct * 20
         request.session['score'] = score
         request.session['correct'] = correct
