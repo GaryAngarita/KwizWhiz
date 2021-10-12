@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,16 +19,12 @@
             <form method="POST" action="/processquiz/{{quiz.id}}">
             {% csrf_token %}
             {% for question in quiz.questions.all %}
-            <label for="question">{{question.title}}</label>
+            <div><label for="question">{{question.title}}</label></div>
                 {% for answer in question.answers.all %}
-            <h5>{{answer.answer_text}}</h5>
+                  <input type="radio" id="html" name="answer-{{question.id}}" value="{{answer.answer_text}}">
+                    <label for="html">{{answer.answer_text}}</label><br>
             <div class="row mb-3">
                 {% endfor %}
-                <label for="answer" class="col-sm-2 col-form-label">Type your answer here</label>
-                <div class="col-sm-10">
-                    <input type="hidden" id="custId" name="return-{{answer.id}}" value="{{answer.is_right}}">
-                    <input type="text" class="form-control" name="answer-{{answer.id}}">
-                </div>
             </div>
             <br>
             <hr>
@@ -38,7 +35,4 @@
 
 
     </div>
-    
-</body>
-</html>
 
