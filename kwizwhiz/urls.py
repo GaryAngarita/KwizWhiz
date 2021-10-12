@@ -9,6 +9,6 @@ urlpatterns = [
     path('selectquiz/<int:category_id>', views.selectquiz),
     path('takequiz/<int:quiz_id>', views.takequiz),
     path('processquiz/<int:quiz_id>', views.processquiz),
-    path('results', views.results),
+    path('results/<int:quiz_id>', views.results),
     path('logout', views.logout)
 ]

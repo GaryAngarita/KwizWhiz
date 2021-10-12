@@ -14,9 +14,22 @@
     <h3>Score: {{request.session.score}}</h3>
     <h3>Correct: {{request.session.correct}}</h3>
     <h3>Incorrect (or blank): {{request.session.wrong}}</h3>
-    {% if request.session.score > 90 %}
-    <img src="{% static 'img/basketball.jpg' %}" height="200" width="200">
-    {% elif request.session.score < 90 %}
+    <h3><a href="/">Take a new quiz!</a></h3>
+    {% if request.session.score > 90 and quiz.title == "Space" %}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/FkQWpQd9Zdo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% elif request.session.score > 90 and quiz.title == "Basketball" %}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/EKMQF5V-8qU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% elif request.session.score > 90 and quiz.title == "Anatomy" %}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Ae4MadKPJC0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% elif request.session.score > 90 and quiz.title == "Football" %}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/hvQrhsaR0EE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% elif request.session.score > 90 and quiz.title == "Baseball" %}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GXMMV5syoFs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% elif request.session.score > 90 and quiz.title == "Pets" %}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/zVtKbhhl81Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% elif request.session.score > 90 and quiz.title == "Airborne" %}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/NR4JYGUdbWE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% elif request.session.score < 90 and quiz.title == "Science" %}
     <img src="{% static 'img/pets.jpg' %}" height="100" width="100" alt="">
     {% endif %}
 </body>

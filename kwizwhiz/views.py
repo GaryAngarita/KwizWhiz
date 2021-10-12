@@ -49,10 +49,10 @@ def processquiz(request, quiz_id):
         for question in quiz.questions.all():
             total += 1
             for answer in question.answers.all():
-                if answer.is_right and answer.answer_text == request.POST['answer-'+str(question.id)]:              
+                if request.POST.get('answer-'+str(question.id)) == '':
+                    return redirect('/takequiz')
+                elif answer.is_right and answer.answer_text == request.POST['answer-'+str(question.id)]:              
                     correct += 1
-                elif request.POST['answer-'+str(question.id)] == '':
-                    return redirect('takequiz')
                 elif not answer.is_right and answer.answer_text == request.POST['answer-'+str(question.id)]:
                     wrong += 1
         score = correct * 20
@@ -60,12 +60,15 @@ def processquiz(request, quiz_id):
         request.session['correct'] = correct
         request.session['wrong'] = wrong
         request.session['total'] = total
-        return redirect('/results')
+        return redirect(f'/results/{quiz.id}')
     else:
         return redirect('/')
 
-def results(request):
-    return render(request, "results.html")
+def results(request, quiz_id):
+    context = {
+        "quiz": Quiz.objects.get(id = quiz_id)
+    }
+    return render(request, "results.html", context)
 
 def logout(request):
     request.session.flush()
