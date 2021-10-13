@@ -14,7 +14,6 @@
     <h3>Score: {{request.session.score}}</h3>
     <h3>Correct: {{request.session.correct}}</h3>
     <h3>Incorrect (or blank): {{request.session.wrong}}</h3>
-    <h3><a href="/">Take a new quiz!</a></h3>
     {% if request.session.score > 90 and quiz.title == "Space" %}
     <iframe width="560" height="315" src="https://www.youtube.com/embed/FkQWpQd9Zdo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     {% elif request.session.score > 90 and quiz.title == "Basketball" %}
@@ -29,8 +28,23 @@
     <iframe width="560" height="315" src="https://www.youtube.com/embed/zVtKbhhl81Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     {% elif request.session.score > 90 and quiz.title == "Airborne" %}
     <iframe width="560" height="315" src="https://www.youtube.com/embed/NR4JYGUdbWE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    {% elif request.session.score < 90 and quiz.title == "Science" %}
-    <img src="{% static 'img/pets.jpg' %}" height="100" width="100" alt="">
+    {% elif request.session.score < 90 and quiz.title == "Space" %}
+    <img src="{% static 'img/space.jpg' %}" height="200" width="200" alt="">
+    <h3>Try again for a better outcome :)</h3>
+    {% elif request.session.score < 90 and quiz.title == "Anatomy" %}
+    <img src="{% static 'img/anatomy.jpg' %}" height="200" width="200" alt="">
+    {% elif request.session.score < 90 and quiz.title == "Basketball" %}
+    <img src="{% static 'img/basketball.jpg' %}" height="200" width="200" alt="">
+    {% elif request.session.score < 90 and quiz.title == "Football" %}
+    <img src="{% static 'img/football.jpg' %}" height="200" width="200" alt="">
+    {% elif request.session.score < 90 and quiz.title == "Baseball" %}
+    <img src="{% static 'img/baseball.jpg' %}" height="200" width="200" alt="">
+    {% elif request.session.score < 90 and quiz.title == "Pets" %}
+    <img src="{% static 'img/pets.jpg' %}" height="200" width="200" alt="">
+    {% elif request.session.score < 90 and quiz.title == "Airborne" %}
+    <img src="{% static 'img/airborne.jpg' %}" height="200" width="00" alt="">
     {% endif %}
+    <br>
+    <h3>Take a <a href="/">new</a> quiz or <a href="/takequiz/{{quiz.id}}">retry?</a></h3>
 </body>
 </html>
