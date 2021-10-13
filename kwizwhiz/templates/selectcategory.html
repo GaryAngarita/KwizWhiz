@@ -23,8 +23,10 @@
             <img src="{% static 'img/science.jpg' %}" height="200" width="200">
             {% elif category.id == 2 %}
             <img src="{% static 'img/sports.jpg' %}" height="200" width="200">
+            {% elif category.id == 3 %}
+            <img src="{% static 'img/animals.jpg' %}" height="200" width="200">
             {% else %}
-            <img src="{% static 'img/animals.jpg' %}"height="200" width="200">
+            <img src="{% static 'img/aviation.jpg' %}"height="200" width="200">
             {% endif %}</a>        
     </div>
     {% endfor %}

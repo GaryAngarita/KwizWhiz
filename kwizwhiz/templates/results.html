@@ -28,21 +28,25 @@
     <iframe width="560" height="315" src="https://www.youtube.com/embed/zVtKbhhl81Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     {% elif request.session.score > 90 and quiz.title == "Airborne" %}
     <iframe width="560" height="315" src="https://www.youtube.com/embed/NR4JYGUdbWE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% elif request.session.score >= 80 and quiz.title == "Airspace" %}
+    <iframe src="https://www.pornhub.com/embed/ph613e57f5bab08" frameborder="0" width="560" height="315" scrolling="no" allowfullscreen></iframe>
     {% elif request.session.score < 90 and quiz.title == "Space" %}
-    <img src="{% static 'img/space.jpg' %}" height="200" width="200" alt="">
+    <img src="{% static 'img/space.jpg' %}" height="200" width="200" alt="Space">
     <h3>Try again for a better outcome :)</h3>
     {% elif request.session.score < 90 and quiz.title == "Anatomy" %}
-    <img src="{% static 'img/anatomy.jpg' %}" height="200" width="200" alt="">
+    <img src="{% static 'img/anatomy.jpg' %}" height="200" width="200" alt="Anatomy">
     {% elif request.session.score < 90 and quiz.title == "Basketball" %}
-    <img src="{% static 'img/basketball.jpg' %}" height="200" width="200" alt="">
+    <img src="{% static 'img/basketball.jpg' %}" height="200" width="200" alt="Basketball">
     {% elif request.session.score < 90 and quiz.title == "Football" %}
-    <img src="{% static 'img/football.jpg' %}" height="200" width="200" alt="">
+    <img src="{% static 'img/football.jpg' %}" height="200" width="200" alt="Football">
     {% elif request.session.score < 90 and quiz.title == "Baseball" %}
-    <img src="{% static 'img/baseball.jpg' %}" height="200" width="200" alt="">
+    <img src="{% static 'img/baseball.jpg' %}" height="200" width="200" alt="Baseball">
     {% elif request.session.score < 90 and quiz.title == "Pets" %}
-    <img src="{% static 'img/pets.jpg' %}" height="200" width="200" alt="">
+    <img src="{% static 'img/pets.jpg' %}" height="200" width="200" alt="Pets">
     {% elif request.session.score < 90 and quiz.title == "Airborne" %}
-    <img src="{% static 'img/airborne.jpg' %}" height="200" width="00" alt="">
+    <img src="{% static 'img/airborne.jpg' %}" height="200" width="200" alt="Airborne">
+    {% elif request.session.score < 80 and quiz.title == "Airspace" %}
+    <img src="{% static 'img/nationalairspace.jpg' %}" height="500" width="550" alt="National Airspace">
     {% endif %}
     <br>
     <h3>Take a <a href="/">new</a> quiz or <a href="/takequiz/{{quiz.id}}">retry?</a></h3>
